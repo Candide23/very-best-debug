@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  def all_users
+  def index
     matching_users = User.all
     @users = matching_users.order(:created_at)
 
@@ -30,6 +30,7 @@ class UsersController < ApplicationController
     
     the_user.username = params.fetch("query_username")
     the_user.save
+
     redirect_to("/users/#{the_user.username}")
   end
 
